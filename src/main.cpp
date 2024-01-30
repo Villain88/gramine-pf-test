@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     const std::string srcFile = argv[1];
     for (int i = 0; i < threadsCount; i++) {
         std::string destFile = srcFile + ".encrypted." + std::to_string(i);
-        threads.push_back(std::thread(&PfCrypt::encryptFile, &pfCrypt, std::cref(srcFile), destFile, &pfKey));
+        threads.push_back(std::thread(&PfCrypt::encryptFileEx, &pfCrypt, std::cref(srcFile), destFile, &pfKey));
     }
 
     for (std::thread & th : threads) {
